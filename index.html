@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
+    <title>Cache Sim</title>
+</head>
+
+<body onload="init()" onresize="resize()">
+    <div id="header">
+        <img src="img/logo.png">
+        <button id="aboutButton" onclick="aboutClicked()">About</button>
+    </div>
+
+
+    <div id="contents">
+        <div id="interface">
+            <h3>Cache Parameters</h3>
+
+            <div id="cacheParams">
+                <div>
+                    <label for="capcity">capacity (c)</label>
+
+                    <select name="capacity" id="capacityDropdown" onclick="updateCacheParams()">
+                        <option value="1024">1024</option>
+                        <option value="512">512</option>
+                        <option value="256">256</option>
+                        <option value="128">128</option>
+                        <option value="64">64</option>
+                        <option value="32">32</option>
+                        <option selected value="16">16</option>
+                        <option value="8">8</option>
+                        <option value="4">4</option>
+                        <option value="2">2</option>
+                        <option value="1">1</option>
+                    </select>
+                </div>
+
+                
+                <div>
+                    <label for="blocksize">blocksize (b)</label>
+
+                    <select name="blocksize" id="blocksizeDropdown" onclick="updateCacheParams()">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="8">8</option>
+                        <option value="16">16</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="doa">degree of associativity (N)</label>
+
+                    <select name="doa" id="doaDropdown" onclick="updateCacheParams()">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="8">8</option>
+                        <option value="16">16</option>
+                    </select>
+                </div>
+            </div>
+
+            <h3>Run Instructions</h3>
+
+            <div>
+                <div>
+                    <label for="adressBox">lw $register 0( </label>
+                    <input type="text" id="adressBox" name="adressBox">
+                    <label>)</label>
+                    <input type="submit" value="Execute" onclick="excecuteClicked()">
+                </div>
+
+                <div>
+                    <label>Load & Run File</label>
+                    <input type="file" onchange="uploadFile(event)" />
+                    
+                </div>
+
+                <button type="button" onclick="fileFormatInfoClick()">File Format Info</button>
+                
+            </div>
+
+            <h3>Format Options</h3>
+
+            <div id="prefs">
+                <div>
+                    <label for="inputFormat">Input Format</label>
+
+                    <select name="inputFormat" id="inputFormatDropdown" onclick="inputFormatChanged()">
+                        <option value="16">Hexadecimal</option>
+                        <option value="2">Binary</option>
+                        <option value="10">Decimal</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="addrFormat">Address Format</label>
+
+                    <select name="addrFormat" id="addrFormatDropdown" onclick="addrFormatChanged()">
+                        <option value="16">Hexadecimal</option>
+                        <option value="2">Binary</option>
+                        <option value="10">Decimal</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="indexFormat">Index Format</label>
+
+                    <select name="indexFormat" id="indexFormatDropdown" onclick="indexFormatChanged()">
+                        <option value="16">Hexadecimal</option>
+                        <option value="2">Binary</option>
+                        <option value="10">Decimal</option>
+                    </select>
+                </div>
+            </div>
+
+            <h3>Statistics</h3>
+
+            <div id="stats">
+                <div><label id="missLabel">Misses: 0</label></div>
+                <div><label id="hitLabel">Hits: 0</label></div>
+                <div><label id="compMissLabel">Compulsory Misses: 0</label></div>
+                <div><label id="missPercent">Miss Percentage:</label></div>
+    
+                <div>
+                    <input type="checkbox" id="countCompMissesCheckbox" name="countCompMissesCheckbox" value="check" onclick="toggleCompMisses()">
+                    <label for="countCompMissesCheckbox"> Count Compulsory Misses</label>
+                </div>
+            </div>
+
+            <h3>Address Fields</h3>
+
+            <div id="fieldsGraphic">
+                <div>
+                    <label id="tagBits" class="tagGraphic"> 00... [26] ...00 </label>
+                    <label id="indexBits" class="indexGraphic"> 0000 </label>
+                    <label id="blockBits" class="blockGraphic"></label>
+                    <label id="boBits" class="boGraphic"> 00 </label>
+                </div>
+
+                <div>
+                    <label>[</label>
+                    <label class="tagGraphic"> Tag </label>
+                    <label class="indexGraphic"> Index </label>
+                    <label class="blockGraphic"> Block</label>
+                    <label class="boGraphic"> Byte Offset </label>
+                    <label>]</label>
+                </div>
+            </div>
+
+            <h3>Instruction History</h3>
+
+            <div>
+                
+                <div id="historyDiv">
+                    <label>No Instructions Yet!</label>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="cacheTables"></div>
+
+    </div>
+
+</body>
+<script src="dependencies/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/helpers.js"></script>
+</html>

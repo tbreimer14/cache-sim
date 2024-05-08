@@ -1,0 +1,106 @@
+body {
+	background-color: #8d96c5;
+	font-family: monospace;
+	overflow: hidden;
+}
+
+#contents {
+	display: flex;
+}
+
+#header {
+	margin-top: 10px;
+	margin-left: 2px;
+	margin-right: 2px;
+	border-radius: 10px;
+	background-color: #C6D4FF;
+}
+
+#interface {
+	display: grid;
+	float: left;
+	width: fit-content;
+	margin-top: 10px;
+	margin-left: 2px;
+	margin-right: 5px;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: #C6D4FF;
+	overflow-y:auto;
+	resize: both
+}
+
+#cacheTables {
+	float: right;
+	height: fit-content;
+	margin-top: 10px;
+	margin-left: 2px;
+	margin-right: 2px;
+	border-radius: 10px;
+	padding: 20px;
+	background-color: #C6D4FF;
+	overflow-y:auto;
+	overflow-x:auto;
+	flex-grow: 1;
+
+	resize: both;
+
+	display: grid;
+	grid-auto-columns: minmax(10px, auto);
+}
+
+#aboutButton {
+	font-family: monospace;
+	background-color: #12664F;
+    color: white;
+    height: 60px;
+    width: 80px;
+    border: none;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    float: right;
+}
+
+td {
+	text-align: center;
+}
+
+#historyDiv {
+	overflow-y:auto;
+	height: 20vh;
+}
+
+table {
+	table-layout: fixed;
+}
+
+.tagGraphic {
+	color: #7A82AB;
+}
+
+.indexGraphic {
+	color: #12664F;
+}
+
+.blockGraphic {
+	color: #2DC2BD;
+}
+
+.boGraphic {
+	color: black;
+}
+
+#aboutDiv {
+	padding: 5px;
+	margin-left: 20px;
+}
+
+tr:nth-child(even) {
+	background-color: rgba(45, 194, 189, 0.4);
+  }
+  
+th:nth-child(even),td:nth-child(even) {
+	background-color: rgba(45, 194, 189, 0.4);
+}
